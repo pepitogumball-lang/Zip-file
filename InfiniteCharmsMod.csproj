@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>InfiniteCharmsMod</AssemblyName>
+    <RootNamespace>InfiniteCharmsMod</RootNamespace>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>libs/Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>libs/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>libs/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>libs/PlayMaker.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
