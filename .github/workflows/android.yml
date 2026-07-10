@@ -1,0 +1,38 @@
+name: Android Mod Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Download References
+      run: |
+        mkdir -p libs
+        # Nota: Aquí asumo que las DLLs necesarias no están en el repo.
+        # Como no tengo las DLLs de Hollow Knight, este paso fallará a menos que se provean.
+        # Usaré una solución temporal para que al menos intente compilar si las subes.
+        echo "Buscando referencias en carpeta 'libs'..."
+
+    - name: Build Mod
+      run: |
+        dotnet build InfiniteCharmsMod.csproj -c Release -o output
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: InfiniteCharmsMod-DLL
+        path: output/InfiniteCharmsMod.dll
